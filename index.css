@@ -1,0 +1,140 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  
+}
+
+body{
+  background-color: #043927;
+  overflow: hidden;
+
+}
+nav{
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 70px;
+
+}
+
+nav .nav-links ul {
+  display: flex;
+  gap: 30px;
+  text-decoration: none;
+}
+
+nav .nav-links ul li a{
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+
+section{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section img{
+  position: absolute;
+  top: 0;
+  left: 0;
+   width: 100%;
+  height: 100%; 
+  object-fit: cover;
+  
+
+}
+
+section .tree{
+  position: relative;
+  /* color: white;
+  font-size: 12em; */
+  width: 50em;
+  top: 150px;
+  
+}
+
+section .tree{animation: pulsing 3s;}
+@keyframes pulsing {
+  0% {transform: scale(2);}
+  100% {transform: scale(1);}
+}
+
+.text {
+  width: 300px;
+}
+
+.text p{
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  position: relative;
+  bottom: 18em;
+  left: 62em;
+  filter: brightness(.9);
+}
+
+
+.text2 {
+  width: 700px;
+}
+
+.text2 p{
+  color: white;
+  font-size: 110px;
+  font-weight: 500;
+  position: relative;
+  bottom:5.5em;
+  left: 3.5em;
+  text-align: center;
+
+}
+
+ p{animation: pulsing 3s;}
+@keyframes pulsing {
+  0% {transform: scale(2);}
+  100% {transform: scale(1);}
+}
+
+
+.logo img{
+  filter: brightness(100);
+}
+
+
+/* mouse follow */
+
+
+.wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+#ball {
+  width: 60px;
+  height: 60px;
+  background: none;
+  border: 2px solid grey;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -10px 0 0 -10px;
+  pointer-events: none;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body onload="followMouse();">
+    <nav>
+      <div class="logo">
+        <img src="image/palmlogo2.png" />
+      </div>
+
+      <div class="nav-links">
+        <ul>
+          <li>
+            <a href="#">EN</a>
+          </li>
+          <li>
+            <a href="#">عربي</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <section>
+      <img
+        src="image/tim.gif"
+        data-speed="-5"
+        class="layer"
+        style="filter: brightness(0.5); opacity: 0.7"
+      />
+
+      <!-- <h2 class="layer" data-speed="-5">Parallax</h2> -->
+      <img src="image/palm.png" data-speed="5" class="tree layer" />
+    </section>
+
+    <div class="text layer" data-speed="-5">
+      <p>
+        Symbolized by a palm tree, which in Arab tradition represents
+        resilience, refuge, and abundance. Stories, like trees, provide
+        structure, drive impact and guide future generations onto new paths.
+        Ours is one such story..
+      </p>
+    </div>
+
+    <div class="text2 layer" data-speed="-5">
+      <p>A Story Of Growth</p>
+    </div>
+
+    <!-- follow mouse -->
+
+    <div class="wrap">
+      <div id="ball"></div>
+    </div>
+
+    <script>
+      document.addEventListener("mousemove", parallax);
+
+      function parallax(e) {
+        this.querySelectorAll(".layer").forEach((layer) => {
+          const speed = layer.getAttribute("data-speed");
+
+          const x = (window.innerWidth - e.pageX * speed) / 100;
+          const y = (window.innerHeight - e.pageY * speed) / 100;
+
+          layer.style.transform = `translateX(${x}px) translateY(${y}px)`;
+        });
+      }
+
+      // mouse follow
+
+      var $ = document.querySelector.bind(document);
+      var $on = document.addEventListener.bind(document);
+
+      var xmouse, ymouse;
+      $on("mousemove", function (e) {
+        xmouse = e.clientX || e.pageX;
+        ymouse = e.clientY || e.pageY;
+      });
+
+      var ball = $("#ball");
+      var x = void 0,
+        y = void 0,
+        dx = void 0,
+        dy = void 0,
+        tx = 0,
+        ty = 0,
+        key = -1;
+
+      var followMouse = function followMouse() {
+        key = requestAnimationFrame(followMouse);
+
+        if (!x || !y) {
+          x = xmouse;
+          y = ymouse;
+        } else {
+          dx = (xmouse - x) * 0.125;
+          dy = (ymouse - y) * 0.125;
+          if (Math.abs(dx) + Math.abs(dy) < 0.1) {
+            x = xmouse;
+            y = ymouse;
+          } else {
+            x += dx;
+            y += dy;
+          }
+        }
+        ball.style.left = x + "px";
+        ball.style.top = y + "px";
+      };
+    </script>
+  </body>
+</html>
